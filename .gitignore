@@ -58,8 +58,13 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
-# CUSTOM IGNORES
+# Custom Ignores
 
 Assets/Graphics/
+<<<<<<< HEAD
 Assets/Audio/
 Assets/DinoFracture/
+=======
+Assets/Animation/
+Assets/Audio/
+>>>>>>> TwoLettuce
