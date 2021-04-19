@@ -61,5 +61,10 @@ crashlytics-build.properties
 # Custom Ignores
 
 Assets/Graphics/
+<<<<<<< Updated upstream
 Assets/Animation/
 Assets/Audio/
+=======
+Assets/Audio/
+Assets/DinoFracture/
+>>>>>>> Stashed changes
