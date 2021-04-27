@@ -62,9 +62,14 @@ crashlytics-build.properties
 
 Assets/Graphics/
 <<<<<<< HEAD
+<<<<<<< HEAD
 Assets/Audio/
 Assets/DinoFracture/
 =======
 Assets/Animation/
 Assets/Audio/
 >>>>>>> TwoLettuce
+=======
+Assets/Audio/
+Assets/DinoFracture/
+>>>>>>> Bala
