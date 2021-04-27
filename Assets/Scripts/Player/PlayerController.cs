@@ -77,10 +77,11 @@ public class PlayerController : MonoBehaviour
 
     private void HandleSprint()
     {
-        if(inputHandler.sprintDown)
+        if (inputHandler.sprintDown)
         {
             speedModifier = 8;
-        } else
+        }
+        else
         {
             speedModifier = 5;
         }
