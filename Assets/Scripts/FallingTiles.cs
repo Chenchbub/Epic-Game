@@ -12,6 +12,8 @@ public class FallingTiles : MonoBehaviour
         //float tiltAroundX = Input.GetAxis("Vertical") * tiltAngle;
         //Quaternion target = Quaternion.Euler(tiltAroundX, 0, tiltAroundZ);
         //transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime);
+       
     }
+    
 }
 

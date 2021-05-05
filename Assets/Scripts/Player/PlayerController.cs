@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     public Transform cam;
     public bool isPickingUp; //whether or not the player is pressing the pickup button
     public int numTimesJumped;
+    private Vector3 currentCheckpoint;
+    [SerializeField]
+    private bool isResetting = false;
     #region HandlingGravity
     [SerializeField]
     private Transform groundCheck;
@@ -43,6 +46,13 @@ public class PlayerController : MonoBehaviour
         HandleJump();
         HandleSprint();
         HandlePickup();
+        HandleReset();
+
+        if (transform.position.y <= -10)
+        {
+                isResetting = true;
+            
+        }
     }
             
     private void HandleMovement(float delta)
@@ -112,5 +122,24 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void HandleReset()
+    {
+        if (isResetting)
+        {
+            transform.position = currentCheckpoint;
+            isResetting = false;
+        }
+    }
+    private void SetCheckpoint(Vector3 newCheckpoint)
+    {
+        currentCheckpoint = newCheckpoint;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Checkpoint"))
+        {
+            SetCheckpoint(transform.position);
+        }
+    }
 
 }

@@ -11,7 +11,7 @@ public class InputHandler : MonoBehaviour
     public Vector2 move;
     public Vector2 look;
     public bool pickupDown = false;
-    public bool sprintDown = false;
+    public bool sprintDown = true;
     public bool jumpDown = false;
 
     private void Awake()
