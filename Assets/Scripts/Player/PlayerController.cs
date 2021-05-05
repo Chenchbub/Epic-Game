@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public Transform cam;
     public bool isPickingUp; //whether or not the player is pressing the pickup button
     public int numTimesJumped;
+    public bool isMoving = false;
     #region HandlingGravity
     [SerializeField]
     private Transform groundCheck;
@@ -47,7 +48,18 @@ public class PlayerController : MonoBehaviour
             
     private void HandleMovement(float delta)
     {
+        
         Vector3 movement = (inputHandler.move.x * transform.right) + (inputHandler.move.y * transform.forward);
+
+        if (movement.Equals(Vector3.zero))
+        {
+            isMoving = false;
+        }
+        else
+        {
+            isMoving = true;
+        }
+
         controller.Move(movement * speedModifier * delta);
     }
 
