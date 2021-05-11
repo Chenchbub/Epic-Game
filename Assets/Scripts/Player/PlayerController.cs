@@ -15,15 +15,14 @@ public class PlayerController : MonoBehaviour
     private bool wallJumpUsed; //the player has used wall jump since they last double jumped or left the ground
     private bool doubleJumpUsed; //the player has used double jump since they have left the ground
     public Transform cam;
-<<<<<<< Updated upstream
+
     public bool isPickingUp; //whether or not the player is pressing the pickup button
     public int numTimesJumped;
     public bool isMoving = false;
-=======
-    private bool isPickingUp; //whether or not the player is pressing the pickup button
+
     public Vector3 currentCheckpoint;   //the checkpoint the player touched last
     private bool isRespawning;      //has the player triggered something to cause a respawn
->>>>>>> Stashed changes
+
     public bool isGrounded = true;
     #region HandlingGravity
     [SerializeField]
