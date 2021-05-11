@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Pickup
+  - Checkpoint
+  - Wall Jump
+  - Next Level
+  - Death Barrier
+  - Ceiling
+  - Double Jump Reset
   layers:
   - Default
   - TransparentFX
@@ -14,9 +21,9 @@ TagManager:
   - 
   - 
   - Ground
-  - 
-  - 
-  - 
+  - Player
+  - Wall
+  - Ceiling
   - 
   - 
   - 

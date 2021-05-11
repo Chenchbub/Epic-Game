@@ -57,6 +57,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Reset"",
+                    ""type"": ""Button"",
+                    ""id"": ""28ced03f-5ded-4be8-a62f-4633cae6e732"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -158,6 +166,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9ce0db05-3fca-46b8-b53f-59004fa5bc3c"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -171,6 +190,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Locomotion_Pickup = m_Locomotion.FindAction("Pickup", throwIfNotFound: true);
         m_Locomotion_Sprint = m_Locomotion.FindAction("Sprint", throwIfNotFound: true);
         m_Locomotion_Look = m_Locomotion.FindAction("Look", throwIfNotFound: true);
+        m_Locomotion_Reset = m_Locomotion.FindAction("Reset", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -225,6 +245,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Locomotion_Pickup;
     private readonly InputAction m_Locomotion_Sprint;
     private readonly InputAction m_Locomotion_Look;
+    private readonly InputAction m_Locomotion_Reset;
     public struct LocomotionActions
     {
         private @Controls m_Wrapper;
@@ -234,6 +255,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Pickup => m_Wrapper.m_Locomotion_Pickup;
         public InputAction @Sprint => m_Wrapper.m_Locomotion_Sprint;
         public InputAction @Look => m_Wrapper.m_Locomotion_Look;
+        public InputAction @Reset => m_Wrapper.m_Locomotion_Reset;
         public InputActionMap Get() { return m_Wrapper.m_Locomotion; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -258,6 +280,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Look.started -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnLook;
+                @Reset.started -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnReset;
+                @Reset.performed -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnReset;
+                @Reset.canceled -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnReset;
             }
             m_Wrapper.m_LocomotionActionsCallbackInterface = instance;
             if (instance != null)
@@ -277,6 +302,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
+                @Reset.started += instance.OnReset;
+                @Reset.performed += instance.OnReset;
+                @Reset.canceled += instance.OnReset;
             }
         }
     }
@@ -288,5 +316,6 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnPickup(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+        void OnReset(InputAction.CallbackContext context);
     }
 }

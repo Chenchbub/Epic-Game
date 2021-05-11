@@ -9,11 +9,11 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private Transform playerParent;
     [SerializeField]
-    private float hSens = 100f;
+    private float hSens = 50;
     [SerializeField]
-    private float vSens = 100f;
+    private float vSens = 50f;
     [SerializeField]
-    private float sens = 100f;
+    private float sens = 50;
 
     private float xRot = 0f;
     // Start is called before the first frame update
