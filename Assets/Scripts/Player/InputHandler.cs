@@ -13,6 +13,7 @@ public class InputHandler : MonoBehaviour
     public bool pickupDown = false;
     public bool sprintDown = true;
     public bool jumpDown = false;
+    public bool resetDown = false;
 
     private void Awake()
     {
@@ -49,10 +50,12 @@ public class InputHandler : MonoBehaviour
         controls.Locomotion.Jump.canceled += controls => jumpDown = false;
 
         controls.Locomotion.Sprint.performed += controls => sprintDown = true;
-
         controls.Locomotion.Sprint.canceled += controls => sprintDown = false;
 
         controls.Locomotion.Pickup.performed += controls =>pickupDown = true;
         controls.Locomotion.Pickup.canceled += controls => pickupDown = false;
+
+        controls.Locomotion.Reset.performed += controls => resetDown = true;
+        controls.Locomotion.Reset.canceled += controls => resetDown = false;
     }
 }
