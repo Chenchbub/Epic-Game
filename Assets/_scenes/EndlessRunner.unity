@@ -1776,7 +1776,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 58506b92f0d47e34abd8a4cc293e2975, type: 2}
+  - {fileID: 2100000, guid: 9ba9065abe41a7042a8f6a7626b9efca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2140,6 +2140,7 @@ MonoBehaviour:
   isPickingUp: 0
   numTimesJumped: 0
   isResetting: 0
+  isMoving: 0
   groundCheck: {fileID: 1780085729}
   gravity: -9.81
   velocity: {x: 0, y: 1.08, z: -10}
@@ -2939,7 +2940,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 58506b92f0d47e34abd8a4cc293e2975, type: 2}
+  - {fileID: 2100000, guid: 9ba9065abe41a7042a8f6a7626b9efca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3220,7 +3221,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 58506b92f0d47e34abd8a4cc293e2975, type: 2}
+  - {fileID: 2100000, guid: 9ba9065abe41a7042a8f6a7626b9efca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

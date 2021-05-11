@@ -15,24 +15,18 @@ public class PlayerController : MonoBehaviour
     private bool wallJumpUsed; //the player has used wall jump since they last double jumped or left the ground
     private bool doubleJumpUsed; //the player has used double jump since they have left the ground
     public Transform cam;
-<<<<<<< Updated upstream
+
     public bool isPickingUp; //whether or not the player is pressing the pickup button
     public int numTimesJumped;
-<<<<<<< HEAD
+
     private Vector3 currentCheckpoint;
     [SerializeField]
     private bool isResetting = false;
-=======
+
     public bool isMoving = false;
-<<<<<<< HEAD
->>>>>>> Bala
-=======
-=======
-    private bool isPickingUp; //whether or not the player is pressing the pickup button
-    public Vector3 currentCheckpoint;   //the checkpoint the player touched last
+
     private bool isRespawning;      //has the player triggered something to cause a respawn
->>>>>>> Stashed changes
->>>>>>> TwoLettuce
+
     #region HandlingGravity
     [SerializeField]
     private Transform groundCheck;      //is player touching ground
@@ -61,46 +55,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float CEILING_DISTANCE = 1f;
     #endregion
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Pickup"))
-        {
-            Destroy(other.gameObject);
-            hasDoubleJump = true;
-        }
-
-        if(other.CompareTag("Wall Jump"))
-        {
-            Destroy(other.gameObject);
-            hasWallJump = true;
-        }
-
-        if (other.CompareTag("Checkpoint"))
-        {
-            SetCheckpoint(other.transform.position);
-        }
-        if(other.CompareTag("Next Level"))
-        {
-            SetCheckpoint(new Vector3(other.transform.position.x + 50, other.transform.position.y, other.transform.position.z));
-            isRespawning = true;
-        } 
-        if(other.CompareTag("Death Barrier"))
-        {
-            isRespawning = true;
-        }
-        if(other.CompareTag("Double Jump Reset"))
-        {
-            doubleJumpUsed = false;
-            Destroy(other.gameObject);
-        }
-        
-    }
-    void Start()
-    {
-        controller = GetComponent<CharacterController>();
-        inputHandler = InputHandler.instance;
-    }
     private void Awake()
     {
         if (controllerInstance != null)
@@ -113,6 +67,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        controller = GetComponent<CharacterController>();
+        inputHandler = InputHandler.instance;
+    }
+
     void FixedUpdate()
     {
         HandleMovement(Time.deltaTime);
@@ -120,7 +80,7 @@ public class PlayerController : MonoBehaviour
         HandleJump();
         HandleSprint();
         HandlePickup();
-<<<<<<< HEAD
+
         HandleReset();
 
         if (transform.position.y <= -10)
@@ -128,9 +88,9 @@ public class PlayerController : MonoBehaviour
                 isResetting = true;
             
         }
-=======
+
         HandleRespawn();
->>>>>>> TwoLettuce
+
     }
             
     private void HandleMovement(float delta)
@@ -200,7 +160,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     private void Jump() //math for the jump to make it more organized and neat
     {
         velocity.y = Mathf.Sqrt(JUMP_HEIGHT * -2f * GRAVITY);
@@ -239,9 +198,8 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = currentCheckpoint;
             isRespawning = false;
-        } 
-
-<<<<<<< HEAD
+        }
+    }
     private void HandleReset()
     {
         if (isResetting)
@@ -254,19 +212,40 @@ public class PlayerController : MonoBehaviour
     {
         currentCheckpoint = newCheckpoint;
     }
-    private void OnTriggerEnter(Collider other)
+
+    void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Pickup"))
+        {
+            Destroy(other.gameObject);
+            hasDoubleJump = true;
+        }
+
+        if (other.CompareTag("Wall Jump"))
+        {
+            Destroy(other.gameObject);
+            hasWallJump = true;
+        }
+
         if (other.CompareTag("Checkpoint"))
         {
-            SetCheckpoint(transform.position);
+            SetCheckpoint(other.transform.position);
         }
-=======
->>>>>>> TwoLettuce
-    }
+        if (other.CompareTag("Next Level"))
+        {
+            SetCheckpoint(new Vector3(other.transform.position.x + 50, other.transform.position.y, other.transform.position.z));
+            isRespawning = true;
+        }
+        if (other.CompareTag("Death Barrier"))
+        {
+            isRespawning = true;
+        }
+        if (other.CompareTag("Double Jump Reset"))
+        {
+            doubleJumpUsed = false;
+            Destroy(other.gameObject);
+        }
 
-    public void SetCheckpoint(Vector3 newCheckpoint)
-    {
-        currentCheckpoint = newCheckpoint;
     }
    
 }
