@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 currentCheckpoint;   //the checkpoint the player touched last
     private bool isRespawning;      //has the player triggered something to cause a respawn
 >>>>>>> Stashed changes
+    public bool isGrounded = true;
     #region HandlingGravity
     [SerializeField]
     private Transform groundCheck;      //is player touching ground

@@ -7,12 +7,15 @@ public class Footstep : MonoBehaviour
     PlayerController player;
     AudioSource audioSource;
 
+    InputHandler input;
+
     public float footstepTimer = 0;
     public float footstepFreq = 1;
     void Start()
     {
         player = GetComponent<PlayerController>();
         audioSource = GetComponent<AudioSource>();
+        input = InputHandler.instance;
     }
 
     // Update is called once per frame
@@ -23,7 +26,7 @@ public class Footstep : MonoBehaviour
             if (footstepTimer >= 0)
             {
                 footstepTimer -= Time.deltaTime;
-            } else
+            } else if(footstepTimer <= 0 && !input.jumpDown)
             {
                 Debug.Log("Footstep");
                 //play footstep sound
@@ -36,4 +39,5 @@ public class Footstep : MonoBehaviour
             footstepTimer = 0;
         }
     }
+   
 }
